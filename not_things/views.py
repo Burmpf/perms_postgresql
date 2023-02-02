@@ -9,5 +9,6 @@ class Not_ThingList(generics.ListCreateAPIView):
     serializer_class = Not_ThingSerializer
 
 class Not_ThingDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
     queryset = Not_Thing.objects.all()
     serializer_class = Not_ThingSerializer
