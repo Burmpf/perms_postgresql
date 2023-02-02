@@ -25,6 +25,10 @@ class Not_ThingTests(APITestCase):
         )
         test_thing.save()
 
+
+    def setUp(self):
+        self.client.login(username="testuser1", password="pass")
+
     def test_things_model(self):
         thing = Not_Thing.objects.get(id=1)
         actual_owner = str(thing.owner)
